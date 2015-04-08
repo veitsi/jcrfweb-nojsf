@@ -49,21 +49,22 @@
         </thead>
         <tbody>
             
-            
+            <% for(i=0; i<jcrf.vst.size();i++){
 
-            <tr>
-               
-                
-        <form name="jcrfform" action="index.jsp">
-            <input type="hidden" name="vstid" value="<%=jcrf.vst.get(i).id%>" />
-            <td><input type="text" name="ptn" value="<%=jcrf.vst.get(i).ptn%>" /></td>
-            <td><input type="text" name="nmr" value="<%=jcrf.vst.get(i).nmr%>" /></td>
-            <td><input type="text" name="dt" value="<%=jcrf.vst.get(i).dt%>" /></td>
-            <td><input type="text" name="ttr" value="<%=jcrf.vst.get(i).getTtr()%>" /></td>
-            <td> <input type="submit" value="Submit" name="btnSubmit" /></td>
-        </form>
-
-    </tr>
+            out.print("<tr> <form name='jcrfform' action='index.jsp'>"+
+            "<input type='hidden' name='vstid' value='"+jcrf.vst.get(i).id+"'/>"+
+            "<td><input type='text' name='ptn' value='"+
+            jcrf.vst.get(i).getPtnS()+"'/></td>"+
+            "<td><input type='text' name='nmr' value='"+
+            jcrf.vst.get(i).nmr+"'/></td>"+
+            "<td><input type='text' name='dt' value='"+jcrf.vst.get(i).dt+
+            "'/></td>"+
+            "<td><input type='text' name='ttr' value='"
+                    +jcrf.vst.get(i).getTtrS()+"'/></td>"+
+            "<td> <input type='submit' value='Submit' name='btnSubmit' /></td>"+
+        "</form></tr>");
+    }
+    %>
 </tbody>
 </table>
 
