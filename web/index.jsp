@@ -1,3 +1,4 @@
+
 <%@page import="wbpckg.Jcrf"%>
 <%@page import="wbpckg.Visit"%>
 <%@page import="wbpckg.Square"%>
@@ -20,25 +21,25 @@
     <h1>Hello jCRF!</h1>
 
     <%! Jcrf jcrf = new Jcrf(); %>
-    <% //jcrf.addTestData(); jcrf.toXml();
-        jcrf.fromXml();
-        out.println(jcrf.vst);
-    %>
+    <%  //jcrf.addTestData(); jcrf.toXml();%>
     <%! int i;%>
 
     <hr>
-    <% i=0; %>
-    <% if (request.getParameter("btnSubmit")==null){
-        out.println("form was not submitted");
-    }
-    else {
-        out.println("was submitted"+request.getParameter("vstid")+",");
-        out.println(request.getParameter("ptn")+request.getParameter("nmr")+
-                request.getParameter("dt")+request.getParameter("ttr"));
-    }
-        %>
-    
-    <table border="1">
+    <% i = 0; %>
+    <% if (request.getParameter("btnSubmit") == null) {
+            out.println("form was not submitted");
+        } else {
+            out.println("was submitted" + request.getParameter("vstid") + ",");
+            out.println(request.getParameter("ptn") + request.getParameter("nmr")
+                    + request.getParameter("dt") + request.getParameter("ttr"));
+            jcrf.updAddRow(request.getParameter("vstid"), request.getParameter("ptn"),
+                    request.getParameter("nmr"), "", request.getParameter("ttr"));
+        }
+        jcrf.fromXml();
+        out.println(jcrf.vst);
+    %>
+
+    <table border="01">
         <thead>
             <tr>
                 <th>номер пациента</th>
@@ -48,25 +49,25 @@
             </tr>
         </thead>
         <tbody>
-            
-            <% for(i=0; i<jcrf.vst.size();i++){
 
-            out.print("<tr> <form name='jcrfform' action='index.jsp'>"+
-            "<input type='hidden' name='vstid' value='"+jcrf.vst.get(i).id+"'/>"+
-            "<td><input type='text' name='ptn' value='"+
-            jcrf.vst.get(i).getPtnS()+"'/></td>"+
-            "<td><input type='text' name='nmr' value='"+
-            jcrf.vst.get(i).nmr+"'/></td>"+
-            "<td><input type='text' name='dt' value='"+jcrf.vst.get(i).dt+
-            "'/></td>"+
-            "<td><input type='text' name='ttr' value='"
-                    +jcrf.vst.get(i).getTtrS()+"'/></td>"+
-            "<td> <input type='submit' value='Submit' name='btnSubmit' /></td>"+
-        "</form></tr>");
-    }
-    %>
-</tbody>
-</table>
+            <% for (i = 0; i < jcrf.vst.size(); i++) {
+
+                    out.print("<tr> <form name='jcrfform' action='index.jsp'>"
+                            + "<input type='hidden' name='vstid' value='" + jcrf.vst.get(i).id + "'/>"
+                            + "<td><input type='text' name='ptn' value='"
+                            + jcrf.vst.get(i).getPtnS() + "'/></td>"
+                            + "<td><input type='text' name='nmr' value='"
+                            + jcrf.vst.get(i).getNmrS() + "'/></td>"
+                            + "<td><input type='text' name='dt' value='" + jcrf.vst.get(i).getDtS()
+                            + "' disabled/></td>"
+                            + "<td><input type='text' name='ttr' value='"
+                            + jcrf.vst.get(i).getTtrS() + "'/></td>"
+                            + "<td> <input type='submit' value='Submit' name='btnSubmit' /></td>"
+                            + "</form></tr>");
+                }
+            %>
+        </tbody>
+    </table>
 
 
 
