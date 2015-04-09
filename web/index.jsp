@@ -39,7 +39,7 @@
         out.println(jcrf.vst);
     %>
 
-    <table border="01">
+    <table border="01" width="90%">
         <thead>
             <tr>
                 <th>номер пациента</th>
@@ -62,8 +62,9 @@
                             + "' disabled/></td>"
                             + "<td><input type='text' name='ttr' value='"
                             + jcrf.vst.get(i).getTtrS() + "'/></td>"
-                            + "<td> <input type='submit' value='Submit' name='btnSubmit' /></td>"
-                            + "</form></tr>");
+                            + "<td> <input type='submit' value='Submit' name='btnSubmit' /></td>"+
+                            "<td> <input type='submit' value='Delete' name='btnDelete' /></td>"+
+                            "</form></tr>");
                 }
             %>
         </tbody>

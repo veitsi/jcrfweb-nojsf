@@ -24,6 +24,7 @@ public class Jcrf {
 		super();
 	}
         public void updAddRow(String vstid, String ptn, String nmr, String dt, String ttr){
+           if (vstid=="" || ptn=="" || nmr=="" || ttr=="") return;
            if (Integer.parseInt(ptn)<1 || Integer.parseInt(nmr)<1 ||
                    Float.parseFloat(ttr)<30.0 || Float.parseFloat(ttr)>40.0 ) return;
            int crt=Integer.parseInt(vstid);
