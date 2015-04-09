@@ -27,11 +27,14 @@
        <% if (!(new File("jcrf.xml")).exists()) {
         jcrf.addTestData(); jcrf.toXml();
     }%><br>
+    
     <%! int i;%>
 
     <% i = 0; %>
 
-    <% if (request.getParameter("btnSubmit") == null) {
+    <%  jcrf.fromXml();
+        out.println(jcrf.vst);
+    if (request.getParameter("btnSubmit") == null) {
             out.println("form was not submitted");
         } else {
             out.println("was submitted" + request.getParameter("vstid") + ",");
@@ -40,9 +43,9 @@
             jcrf.updAddRow(request.getParameter("vstid"), request.getParameter("ptn"),
                     request.getParameter("nmr"), "", request.getParameter("ttr"));
         }
-        jcrf.fromXml();
-        out.println(jcrf.vst);
+       
     %>
+    <br>records in db:<%=jcrf.vst.size()%><br>
 
     <table border="01" width="90%">
         <thead>
