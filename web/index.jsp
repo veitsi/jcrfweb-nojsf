@@ -1,9 +1,11 @@
 
+<%@page import="java.io.File"%>
 <%@page import="wbpckg.Jcrf"%>
 <%@page import="wbpckg.Visit"%>
 <%@page import="wbpckg.Square"%>
 <%@page import="java.util.ArrayList"%>
-<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+
+<%--@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%-- 
     Document   : newjsp
     Created on : Apr 7, 2015, 12:22:22 AM
@@ -21,11 +23,14 @@
     <h1>Hello jCRF!</h1>
 
     <%! Jcrf jcrf = new Jcrf(); %>
-    <%  //jcrf.addTestData(); jcrf.toXml();%>
+       do we have db?<%=(new File("jcrf.xml")).exists()%>
+       <% if (!(new File("jcrf.xml")).exists()) {
+        jcrf.addTestData(); jcrf.toXml();
+    }%><br>
     <%! int i;%>
 
-    <hr>
     <% i = 0; %>
+
     <% if (request.getParameter("btnSubmit") == null) {
             out.println("form was not submitted");
         } else {
